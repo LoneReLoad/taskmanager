@@ -12,31 +12,35 @@ def print_menu():
 
 def main():
     task_manager = TaskManager()
+    while True:
+        print_menu()
 
-    print_menu()
-    choice = input("\nSeleccione una opción (1-5): ")
+        try:
+            choice = int(input("\nSeleccione una opción (1-5): "))
 
-    match choice:
-        case "1":
-            description = input("Ingrese la descripción de la tarea: ")
-            task_manager.add_task(description)
+            match choice:
+                case 1:
+                    description = input("Ingrese la descripción de la tarea: ")
+                    task_manager.add_task(description)
 
-        case "2":
-            task_manager.list_tasks()
+                case 2:
+                    task_manager.list_tasks()
 
-        case "3":
-            task_id = int(input("Ingrese el ID de la tarea a completar: "))
-            task_manager.complete_task(task_id)
+                case 3:
+                    task_id = int(input("Ingrese el ID de la tarea a completar: "))
+                    task_manager.complete_task(task_id)
 
-        case "4":
-            task_id = int(input("Ingrese el ID de la tarea a eliminar: "))
-            task_manager.delete_task(task_id)
+                case 4:
+                    task_id = int(input("Ingrese el ID de la tarea a eliminar: "))
+                    task_manager.delete_task(task_id)
 
-        case "5":
-            print("Saliendo del gestor de tareas. ¡Hasta luego!")
-            break
-        case _:
-            print("Opción no válida. Por favor, seleccione una opción del 1 al 5.")
+                case 5:
+                    print("Saliendo del gestor de tareas. ¡Hasta luego!")
+                    break
+                case _:
+                    print("Opción no válida. Seleccione una opción del 1 al 5.")
+        except ValueError:
+            print("Entrada no válida. Por favor, ingrese un número de ID")
 
 
 if __name__ == "__main__":
